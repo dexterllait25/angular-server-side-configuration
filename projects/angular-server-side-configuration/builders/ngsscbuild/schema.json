@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "additionalEnvironmentVariables": {
+      "type": "array",
+      "description": "Additional environment variables that should be added to ngssc.json"
+    },
+    "browserTarget": {
+      "type": "string",
+      "description": "A browser builder target to build in the format of `project:target[:configuration]`.",
+      "pattern": "^[^:\\s]+:[^:\\s]+(:[^\\s]+)?$",
+      "x-deprecated": "Use 'buildTarget' instead."
+    },
+    "buildTarget": {
+      "type": "string",
+      "description": "A build builder target to build in the format of `project:target[:configuration]`.",
+      "pattern": "^[^:\\s]+:[^:\\s]+(:[^\\s]+)?$"
+    },
+    "filePattern": {
+      "type": "string",
+      "description": "The file pattern, into which the environment variables should be inserted during ngssc insert (Defaults to index.html)",
+      "default": ""
+    },
+    "searchPattern": {
+      "type": "string",
+      "description": "The search pattern to use when searching for environment variable occurrences (Defaults to {sourceRoot}/**/environments/environment*.ts)",
+      "default": ""
+    }
+  },
+  "anyOf": [{ "required": ["buildTarget"] }, { "required": ["browserTarget"] }]
+}

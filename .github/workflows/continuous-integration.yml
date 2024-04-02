@@ -1,0 +1,46 @@
+name: Continuous Integration
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: '.nvmrc'
+      - run: yarn install --frozen-lockfile --non-interactive
+
+      - name: 'Run eslint'
+        run: yarn -s lint
+
+  build-and-test-library:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: '.nvmrc'
+      - run: yarn install --frozen-lockfile --non-interactive
+
+
+      - name: 'Build library'
+        run: yarn build:lib
+      - name: 'Test library'
+        run: yarn test:lib
+
+  build-and-test-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version-file: 'go.mod'
+      - run: go version
+
+      - name: 'Build cli'
+        run: yarn build:cli
+      - name: 'Test cli'
+        run: yarn test:cli

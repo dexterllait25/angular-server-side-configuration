@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "migration-v15": {
+      "version": "15-next",
+      "description": "Updates angular-server-side-configuration to v15",
+      "factory": "./ng-update/index#updateToV15"
+    },
+    "migration-v17": {
+      "version": "17-next",
+      "description": "Updates angular-server-side-configuration to v17",
+      "factory": "./ng-update/index#updateToV17"
+    },
+    "dockerfile": {
+      "version": "17.0.2",
+      "description": "Updates the download url for ngssc",
+      "factory": "./ng-update/index#dockerfile"
+    }
+  }
+}

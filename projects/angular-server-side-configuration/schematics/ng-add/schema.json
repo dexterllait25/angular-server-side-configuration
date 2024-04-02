@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "angular-server-side-configuration-ng-add",
+  "title": "angular-server-side-configuration ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "additionalEnvironmentVariables": {
+      "description": "Additional environment variables that should be added to ngssc.json",
+      "type": "string",
+      "x-prompt": "Add additional environment variables (comma-separated):"
+    },
+    "experimentalBuilders": {
+      "description": "Use the experimental builders",
+      "type": "boolean",
+      "default": false,
+      "x-prompt": "Would you like to use the experimental builders for build and serve?"
+    }
+  }
+}

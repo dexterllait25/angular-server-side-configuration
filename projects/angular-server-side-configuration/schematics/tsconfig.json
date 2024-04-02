@@ -1,0 +1,7 @@
+{
+  "extends": "../../../tsconfig.node.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/angular-server-side-configuration/schematics"
+  },
+  "exclude": ["**/files/**/*", "**/*.spec.ts"]
+}
